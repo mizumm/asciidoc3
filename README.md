@@ -8,16 +8,20 @@ AsciiDoc3 is highly configurable: both the AsciiDoc3 source file syntax and the 
 (which can be almost any type of SGML/XML markup) can be customized and extended by the user.
 
 Prerequisites
+
 AsciiDoc3 is written in 100% pure Python3 so you need a Python interpreter (version 3.x or later) to execute asciidoc3).
 Python is installed by default in most Linux distributions. You can download Python from the official Python website
 http://www.python.org.
 
-Obtaining AsciiDoc
-Documentation and installation instructions are on the AsciiDoc website http://asciidoc3.org/
+Obtaining AsciiDoc3
+
+Documentation and installation instructions are on the AsciiDoc3 website http://asciidoc3.org/
 
 Tools
+
 Current AsciiDoc3 version tested on Ubuntu Linux 17.04 with:
-    Python 3.5.2
+
+Python 3.5.2
 
 Copying
 
