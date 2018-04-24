@@ -26,7 +26,7 @@ AsciiDoc (Python2.x) users please note the following differences between AsciiDo
 - deprecated old-table syntax is no longer supported,
 - deprecated option 'unsafe' is no longer supported,
 - there is no attribute 'encoding' any more, use 'input-encoding' and 'output-encoding' instead,
-- use only the files shipping with this distribution: xhtml11 v2 is not the same as v3,
+- use only the files shipping with this distribution: xhtml11.conf v2 is not the same as v3,
 - this applies to most of the other conf-files, too.
 - ...
 ************************************************************************
