@@ -11,7 +11,7 @@
 
 === Encoding
 
-NOTE: To set the encoding of your input and output make use of the attributes 'input-encoding' and 'input-encoding', respectively (default 'utf-8'). These attributes have to be set in the 'asciidoc3.conf' or in the command line! Do not set them in your input-file, this will be ignored.
+NOTE: To set the encoding of your input and output make use of the attributes 'input-encoding' and 'output-encoding', respectively (default 'utf-8'). These attributes have to be set in the 'asciidoc3.conf' or in the command line! Do not set them in your input-file, this will be ignored.
 
 === AsciiDoc Users
 
