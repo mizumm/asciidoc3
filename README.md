@@ -21,5 +21,4 @@ Current *AsciiDoc3* version tested on Ubuntu Linux 17.04 with:
 Python 3.5.2
 
 ## Copying
-Copyright © 2018 Berthold Gehrke <berthold.gehrke@gmail.com>. Free use of this software is granted under the terms of the Affero GNU General
-Public License version 3 (AGPLv3).
+Copyright © 2018 Berthold Gehrke <berthold.gehrke@gmail.com>. Free use of this software is granted under the terms of the GNU General Public License version 3 (GPLv3).
