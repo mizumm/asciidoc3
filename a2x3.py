@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 '''
-a2x3 - A toolchain manager for AsciiDoc3 - converts Asciidoc3 text files to other
-      file formats. See asciidoc3.org for more information.
+a2x3 - A toolchain manager for AsciiDoc3 - converts AsciiDoc3 text files to other
+       file formats. See asciidoc3.org for more information.
 
-Copyright: (c) 2009 Stuart Rackham <srackham@gmail.com>
-License:   MIT 
+Copyright: (c) 2009 Stuart Rackham <srackham@gmail.com> MIT 
 Copyright: (c) 2018 Berthold Gehrke <berthold.gehrke@gmail.com> for Python3 version
-License:   AGNU GPL v3 or higher
+License:   GNU GPL v3 or higher
 '''
 
 
@@ -25,21 +24,21 @@ import zipfile
 
 PROG = os.path.basename(os.path.splitext(__file__)[0])
 # Version corresponds to asciidoc3.py version
-VERSION = '3.0.1'                                      # TODO
+VERSION = '3.0.1'
 
 # AsciiDoc3 global configuration file directory.
-# NOTE: CONF_DIR is "fixed up" by Makefile -- don't rename or change syntax.
-#CONF_DIR = '/etc/asciidoc'
-# if installed local, e.g., the rc, use your real directory here:
-CONF_DIR = '~/asciidoc3'
+# NOTE: CONF_DIR is "fixed up" during install -- don't rename or change syntax.
+CONF_DIR = '/etc/asciidoc3'
+# if installed 'local', e.g. only in your home dir, you may use your directory
+# here; but works somehow or other ...
+#CONF_DIR = '~/.asciidoc3'
 
 ######################################################################
 # Default configuration file parameters.
 ######################################################################
 
-# Optional environment variable dictionary passed to
-# executing programs. If set to None the existing
-# environment is used.
+# Optional environment variable dictionary passed to executing programs.
+# If set to None the existing environment is used.
 ENV = None
 
 # External executables.
@@ -63,9 +62,9 @@ BACKEND_OPTS = ''
 ######################################################################
 
 
-#####################################################################
+######################################################################
 # Utility functions
-#####################################################################
+######################################################################
 
 OPTIONS = None  # These functions read verbose and dry_run command options.
 
@@ -299,9 +298,6 @@ def find_resources(files, tagname, attrname, _filter=None):
         if mo:
             # encoding = mo.group(1)   # v2
             #_encoding = mo.group(1)  # v3 (unused var _encoding)
-            print("contents", contents[:100])
-            print()
-            #print("encoding critical", _encoding)
             #parser.feed(contents.decode(encoding))                    # v2
             contents = str(contents.encode('utf-8', errors='ignore'))  # v3
         parser.feed(contents)
@@ -363,7 +359,7 @@ def get_source_options(asciidoc3_file):
         f = open(asciidoc3_file)
         try:
             for line in f:
-                mo = re.search(r'^//\s*a2x:', line)
+                mo = re.search(r'^//\s*a2x3:', line)
                 if mo:
                     options += ' ' + line[mo.end():].strip()
         finally:

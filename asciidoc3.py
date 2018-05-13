@@ -7,7 +7,7 @@ Copyright (C) 2002-2010 Stuart Rackham
 Copyright (C) 2018 by Berthold Gehrke <berthold.gehrke@gmail.com>
           for Python3 version and 2to3 work.
 Free use of this software is granted under the terms of the
-Affero GNU General Public License Version 3 or higher (AGNU GPLv3).
+GNU General Public License Version 3 or higher (GNU GPLv3).
 """
 
 import ast
@@ -31,7 +31,7 @@ from unicodedata import east_asian_width, normalize
 import zipfile
 
 ### Used by asciidoc3api.py ###
-VERSION = '3.0.1'           # See CHANGLOG file for version history.
+VERSION = '3.0.1'           # See CHANGELOG file for version history.
 MIN_PYTHON_VERSION = '3.0'  # Require this version of Python or better.
 
 #---------------------------------------------------------------------------
@@ -1332,7 +1332,7 @@ class Ad3In(Ad3Codec):
                 if cmd_attrs and ('input-encoding' in cmd_attrs):
                     self._ie = cmd_attrs['input-encoding']
                     self.update_ie_allowed = False
-                    message.verbose('input-encoding is fixed as found in' \
+                    message.verbose('input-encoding is fixed as found in ' \
                                     'command-line: {iencoding}'.format(iencoding=self._ie))
                 # _ie as set in conf-files by user
                 elif conf_attrs and ('input-encoding' in conf_attrs):
@@ -1500,7 +1500,7 @@ class Ad3Out(Ad3Codec):
                 # as set in conf-files from user
                 elif conf_attrs and ('output-encoding' in conf_attrs):
                     self._oe = conf_attrs['output-encoding']       # may be None or missing
-                    message.verbose('outinput-encoding updated as in {filename}: ' \
+                    message.verbose('output-encoding updated as in {filename}: ' \
                                     '{oencoding}'.format(filename=fname, oencoding=self._oe))
                 else: pass
             else:
@@ -5076,7 +5076,6 @@ class Config:
         USER_DIR = userdir()
         if USER_DIR is not None:
             USER_DIR = os.path.join(USER_DIR, '.asciidoc3')
-            #print("##_nr_: 4567 _ USER_DIR ", USER_DIR) # this line TODO
             if not os.path.isdir(USER_DIR):
                 USER_DIR = None
 
