@@ -47,20 +47,26 @@ Doctests: ...
    AsciiDoc3Error: ERROR: <stdin>: line 1: [blockdef-listing] missing closing delimiter
 
 Copyright (C) 2009 Stuart Rackham.
-Python 3.x version: Copyright (C) 2018 Berthold Gehrke <berthold.gehrke@gmail.com>.
-Free use of this software is granted
-under the terms of the Affero GNU General Public License v3 or higher (AGPLv3).
-
+Copyright (C) 2018 Berthold Gehrke <berthold.gehrke@gmail.com>.
+Free use of this software is granted under the terms of the
+GNU General Public License v3 or higher (GPLv3).
 """
 
-import sys, os, re
+import os
+#import re # not used in AsciiDoc3
+import sys
 # module 'imp' deprecated since 3.4 -> 'importlib'
-if float('3.0') <= float(sys.version[:3]) < float('3.4'): import imp
-elif float('3.4') <= float(sys.version[:3]):              import importlib
-else:  sys.exit('Python >= 3.0 required!')
+if float('3.0') <= float(sys.version[:3]) < float('3.4'):
+    import imp
+elif float('3.4') <= float(sys.version[:3]):
+    import importlib
+else:
+    sys.exit('Python >= 3.0 required!')
 
-API_VERSION = '0.1.2'            # Placeholder
-MIN_ASCIIDOC3_VERSION = '3.0.1'  # Minimum acceptable AsciiDoc3 version.
+# next two lines are momentarily unused placeholders
+# since we have no doctests yet
+API_VERSION = '0.1.2'
+MIN_ASCIIDOC3_VERSION = '3.0.1'
 
 
 def find_in_path(fname, path=None):
@@ -135,11 +141,13 @@ class AsciiDoc3API(object):
             # Try shell search paths.
             for fname in ['asciidoc3.py', 'asciidoc3.pyc', 'asciidoc3']:
                 cmd = find_in_path(fname)
-                if cmd: break
+                if cmd:
+                    break
             else:
                 # Finally try current working directory.
                 for cmd in ['asciidoc3.py', 'asciidoc3.pyc', 'asciidoc3']:
-                    if os.path.isfile(cmd): break
+                    if os.path.isfile(cmd):
+                        break
                 else:
                     raise AsciiDoc3Error('failed to locate asciidoc3')
         self.cmd = os.path.realpath(cmd)
@@ -159,8 +167,10 @@ class AsciiDoc3API(object):
                 try:
                     if reload:
                         import builtins  # Because reload() is shadowed.
-                        if float(sys.version[:3]) < float('3.4'): imp.reload(self.asciidoc3)
-                        else: importlib.reload(self.asciidoc3)
+                        if float(sys.version[:3]) < float('3.4'):
+                            imp.reload(self.asciidoc3)
+                        else:
+                            importlib.reload(self.asciidoc3)
                     else:
                         import asciidoc3
                         self.asciidoc3 = asciidoc3
@@ -172,8 +182,10 @@ class AsciiDoc3API(object):
             # The import statement can only handle .py or .pyc files, have to
             # use imp.load_source() for scripts with other names.
             try:
-                if float(sys.version[:3]) < float('3.4'): imp.load_source('asciidoc3', self.cmd)
-                else: importlib.import_module('asciidoc3')
+                if float(sys.version[:3]) < float('3.4'):
+                    imp.load_source('asciidoc3', self.cmd)
+                else:
+                    importlib.import_module('asciidoc3')
                 self.asciidoc3 = asciidoc3
             except ImportError:
                 raise AsciiDoc3Error('failed to import ' + self.cmd)
