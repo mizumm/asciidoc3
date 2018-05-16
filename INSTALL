@@ -21,7 +21,7 @@ See link:download.html[here].
 
 == Installation
 
-=== Unix, GNU/Linux, BSD (, and OS X)
+=== Unix, GNU/Linux, BSD (and probably OS X, too)
 Posix systems (Unix, GNU/Linux, BSD, and assumably OS X) go here.
  
 You have two options to install AsciiDoc3:
@@ -43,8 +43,8 @@ You have two options to install AsciiDoc3:
 - AsciiDoc3 is ready to use ... (continue link:quickstart.html[here]).
 
 - To avoid some configuration steps during daily routine you may consider the following directory layout:
- Copy/rename the deflated directory ~/download/asciidoc3-3.0.1 to ~/.asciidoc3 (with a dot - not visible to ls)
- and create a symlink to directory ~/ad3. This is because asciidoc3.py tries to find some configuration files
+ Copy/rename the deflated directory \~/download/asciidoc3-3.0.1 to \~/.asciidoc3 (with a dot - not visible to ls)
+ and create a symlink to directory \~/ad3. This is because asciidoc3.py tries to find some configuration files
  in ~/.asciidoc3. See Userguide '26.11. Configuration file names, precedence and locations.' But that's optionally,
  everything works somehow or other. Symlinks don't work on partitions formatted as fat/vfat.
   
@@ -59,8 +59,8 @@ You have two options to install AsciiDoc3:
 - Start using AsciiDoc3: ... ... (continue link:quickstart.html[here]).
 
 - To avoid some configuration steps during daily routine you may consider the following directory layout:
- Copy/rename the deflated directory ~/download/asciidoc3-3.0.1 to ~/.asciidoc3 (with a dot - not visible to ls)
- and create a symlink to directory ~/ad3. This is because asciidoc3.py tries to find some configuration files
+ Copy/rename the deflated directory \~/download/asciidoc3-3.0.1 to \~/.asciidoc3 (with a dot - not visible to ls)
+ and create a symlink to directory \~/ad3. This is because asciidoc3.py tries to find some configuration files
  in ~/.asciidoc3. See Userguide '26.11. Configuration file names, precedence and locations.' But that's optionally,
  everything works somehow or other. Symlinks don't work on partitions formatted as fat/vfat.
 
@@ -86,9 +86,9 @@ See link:quickstart.html[here].
 == Uninstall
 (this information is also given in file 'UNINSTALL' of the AsciiDoc3 distribution)
 
-=== Uninstall 'local' installation
+=== Uninstall local installation
 If you have AsciiDoc3 installed 'local' - that means, you have all files in one 
-directory (e.g., ~/asciidoc3) and never ran 'installscript'
+directory (e.g., \~/asciidoc3) and never ran 'installscript'
 (you have used 'python3 asciidoc3.py -a toc -a icons -n mytext.txt' or so):
 just delete the directory '~/asciidoc3' (or wherever you have installed the distribution).
 
