@@ -1,13 +1,13 @@
-= AsciiDoc3 Userguide
-
-:Author: Berthold Gehrke
-:Email: berthold.gehrke@gmail.com
-:Date: 14 April 2018
-:Revision: 0.0.1
-:toclevels: 4
-:toc:
+= AsciiDoc3 User Guide
 
 == Important Notice README 
+
+
+=== Additional Information
+
+[TIP]
+Take a look at './doc/asciidoc3port.txt.' There you can find a lot of additional infos about the porting procedure and how to use AsciiDoc3!
+
 
 === Encoding
 
@@ -24,9 +24,9 @@ AsciiDoc (Python2.x) users please note the following differences between AsciiDo
 - utf-8-BOM is no longer supported (will be ignored),
 - deprecated quirks-modus is no longer supported,
 - deprecated old-table syntax is no longer supported,
-- deprecated option 'unsafe' is no longer supported,
-- there is no attribute 'encoding' any more, use 'input-encoding' and 'output-encoding' instead,
-- use only the files shipping with this distribution: xhtml11.conf v2 is not the same as v3,
+- deprecated option unsafe is no longer supported,
+- there is no attribute encoding any more, use 'input-encoding' and 'output-encoding' instead,
+- use only the files shipping with this distribution: xhtml11.conf v2 is *not* the same as v3,
 - this applies to most of the other conf-files, too.
 - ...
 ************************************************************************
@@ -34,7 +34,7 @@ AsciiDoc (Python2.x) users please note the following differences between AsciiDo
 
 === How to Read This Document
 
-From now on you see the corresponding document of AsciiDoc. It's slightly redacted to meet the terms of AsciiDoc3 - but that is not yet completed. You might replace AsciiDoc with AsciiDoc3 in the text ... 
+From now on you see the corresponding document of AsciiDoc, updated to meet the features of AsciiDoc3 - but that is not yet completed. Visit asciidoc3.org for newer versions.
 
 
 .This document
@@ -71,7 +71,7 @@ below.
 Text markup conventions tend to be a matter of (often strong) personal
 preference: if the default syntax is not to your liking you can define
 your own by editing the text based asciidoc3 configuration files.
-You can also create configuration files to translate AsciiDoc
+You can also create configuration files to translate AsciiDoc3
 documents to almost any SGML/XML markup.
 
 asciidoc3 comes with a set of configuration files to translate
@@ -92,13 +92,14 @@ and fixing syntax errors, than I was writing the documentation.
 
 Installing AsciiDoc3
 ~~~~~~~~~~~~~~~~~~~
-/.../
+See the infos given in file INSTALL and at asciidoc3.org.
 
 
 [[X11]]
 Example AsciiDoc3 Documents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/.../
+See the infos given in file quickstart and at asciidoc3.org. Take a look at ./doc
+of the tarball to find some 'test-files'.
 
 
 AsciiDoc3 Document Types
@@ -109,7 +110,7 @@ minor variations. If you are familiar with DocBook you will have
 noticed that AsciiDoc3 document types correspond to the same-named
 DocBook document types.
 
-Use the asciidoc3 `-d` (`--doctype`) option to specify the AsciiDoc
+Use the asciidoc3 `-d` (`--doctype`) option to specify the AsciiDoc3
 document type -- the default document type is 'article'.
 
 By convention the `.txt` file extension is used for AsciiDoc3 document
@@ -158,7 +159,7 @@ documents observe special header title and section naming conventions
 AsciiDoc3 defines the 'synopsis' <<X93,section markup template>> to
 generate the DocBook `refsynopsisdiv` section.
 
-See also the asciidoc3 man page source (`./doc/asciidoc.1.txt`) from
+See also the asciidoc3 man page source (`./doc/asciidoc3.1.txt`) from
 the AsciiDoc3 distribution.
 
 
@@ -203,14 +204,14 @@ latex::
 
 Backend Aliases
 ~~~~~~~~~~~~~~~
-Backend aliases are alternative names for AsciiDoc3 backends.  AsciiDoc
+Backend aliases are alternative names for AsciiDoc3 backends.  AsciiDoc3
 comes with two backend aliases: 'html' (aliased to 'xhtml11') and
 'docbook' (aliased to 'docbook45').
 
-You can assign (or reassign) backend aliases by setting an AsciiDoc
+You can assign (or reassign) backend aliases by setting an AsciiDoc3
 attribute named like `backend-alias-<alias>` to an AsciiDoc3 backend
 name. For example, the following backend alias attribute definitions
-appear in the `[attributes]` section of the global `asciidoc.conf`
+appear in the `[attributes]` section of the global `asciidoc3.conf`
 configuration file:
 
   backend-alias-html=xhtml11
@@ -225,13 +226,13 @@ backend <<X101,plugins>>.
 - A backend plugin is used just like the built-in backends.
 - Backend plugins <<X27,take precedence>> over built-in backends with
   the same name.
-- You can use the `{asciidoc-confdir}` <<X60, intrinsic attribute>> to
+- You can use the `{asciidoc3-confdir}` <<X60, intrinsic attribute>> to
   refer to the built-in backend configuration file location from
   backend plugin configuration files.
 - You can use the `{backend-confdir}` <<X60, intrinsic attribute>> to
   refer to the backend plugin configuration file location.
 - By default backends plugins are installed in
-  `$HOME/.asciidoc/backends/<backend>` where `<backend>` is the
+  `$HOME/.asciidoc3/backends/<backend>` where `<backend>` is the
   backend name.
 
 
@@ -255,7 +256,7 @@ Converting DocBook to other file formats
 DocBook files are validated, parsed and translated various
 presentation file formats using a combination of applications
 collectively called a DocBook 'tool chain'. The function of a tool
-chain is to read the DocBook markup (produced by AsciiDoc) and
+chain is to read the DocBook markup (produced by AsciiDoc3) and
 transform it to a presentation format (for example HTML, PDF, HTML
 Help, EPUB, DVI, PostScript, LaTeX).
 
@@ -310,8 +311,7 @@ route:
 
 On the other hand, HTML output directly from AsciiDoc3 is much faster,
 is easily customized and can be used in situations where there is no
-suitable DocBook toolchain (for example, see the {website}[AsciiDoc
-website]).
+suitable DocBook toolchain.
 
 PDF generation
 ~~~~~~~~~~~~~~
@@ -337,7 +337,7 @@ HTML Help generation
 
 Toolchain components summary
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-AsciiDoc::
+AsciiDoc3::
     Converts AsciiDoc3 (`.txt`) files to DocBook XML (`.xml`) files.
 
 [[X13]]http://docbook.sourceforge.net/projects/xsl/[DocBook XSL Stylesheets]::
@@ -371,15 +371,15 @@ AsciiDoc::
 AsciiDoc3 dblatex configuration files
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The AsciiDoc3 distribution `./dblatex` directory contains
-`asciidoc-dblatex.xsl` (customized XSL parameter settings) and
-`asciidoc-dblatex.sty` (customized LaTeX settings). These are examples
+`asciidoc3-dblatex.xsl` (customized XSL parameter settings) and
+`asciidoc3-dblatex.sty` (customized LaTeX settings). These are examples
 of optional <<X31,dblatex>> output customization and are used by
 <<X43,a2x3>>.
 
 AsciiDoc3 DocBook XSL Stylesheets drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You will have noticed that the distributed HTML and HTML Help
-documentation files (for example `./doc/asciidoc.html`) are not the
+documentation files (for example `./doc/asciidoc3.html`) are not the
 plain outputs produced using the default 'DocBook XSL Stylesheets'
 configuration.  This is because they have been processed using
 customized DocBook XSL Stylesheets along with (in the case of HTML
@@ -398,8 +398,8 @@ examples that follow are executed from the distribution documentation
     Generate chunked XHTML (separate HTML pages for each document
     section) in the `./doc/chunked` directory. For example:
 
-    $ python ../asciidoc.py -b docbook asciidoc.txt
-    $ xsltproc --nonet ../docbook-xsl/chunked.xsl asciidoc.xml
+    $ python3 ../asciidoc3.py -b docbook asciidoc3.txt
+    $ xsltproc --nonet ../docbook-xsl/chunked.xsl asciidoc3.xml
 
 `epub.xsl`::
     Used by <<X43,a2x3>> to generate EPUB formatted documents.
@@ -408,7 +408,7 @@ examples that follow are executed from the distribution documentation
     Generate XSL Formatting Object (`.fo`) files for subsequent PDF
     file generation using FOP. For example:
 
-    $ python ../asciidoc.py -b docbook article.txt
+    $ python3 ../asciidoc3.py -b docbook article.txt
     $ xsltproc --nonet ../docbook-xsl/fo.xsl article.xml > article.fo
     $ fop article.fo article.pdf
 
@@ -417,23 +417,23 @@ examples that follow are executed from the distribution documentation
     Compiler in the `./doc/htmlhelp` directory. This example is run on
     MS Windows from a Cygwin shell prompt:
 
-    $ python ../asciidoc.py -b docbook asciidoc.txt
-    $ xsltproc --nonet ../docbook-xsl/htmlhelp.xsl asciidoc.xml
+    $ python3 ../asciidoc3.py -b docbook asciidoc3.txt
+    $ xsltproc --nonet ../docbook-xsl/htmlhelp.xsl asciidoc3.xml
     $ c:/Program\ Files/HTML\ Help\ Workshop/hhc.exe htmlhelp.hhp
 
 `manpage.xsl`::
     Generate a `roff(1)` format UNIX man page from a DocBook XML
-    'refentry' document. This example generates an `asciidoc.1` man
+    'refentry' document. This example generates an `asciidoc3.1` man
     page file:
 
-    $ python ../asciidoc.py -d manpage -b docbook asciidoc.1.txt
-    $ xsltproc --nonet ../docbook-xsl/manpage.xsl asciidoc.1.xml
+    $ python3 ../asciidoc3.py -d manpage -b docbook asciidoc3.1.txt
+    $ xsltproc --nonet ../docbook-xsl/manpage.xsl asciidoc3.1.xml
 
 `xhtml.xsl`::
     Convert a DocBook XML file to a single XHTML file. For example:
 
-    $ python ../asciidoc.py -b docbook asciidoc.txt
-    $ xsltproc --nonet ../docbook-xsl/xhtml.xsl asciidoc.xml > asciidoc.html
+    $ python3 ../asciidoc3.py -b docbook asciidoc3.txt
+    $ xsltproc --nonet ../docbook-xsl/xhtml.xsl asciidoc3.xml > asciidoc3.html
 
 If you want to see how the complete documentation set is processed
 take a look at the A-A-P script `./doc/main.aap`.
@@ -441,7 +441,7 @@ take a look at the A-A-P script `./doc/main.aap`.
 
 Generating Plain Text Files
 ---------------------------
-AsciiDoc3 does not have a text backend (for most purposes AsciiDoc
+AsciiDoc3 does not have a text backend (for most purposes AsciiDoc3
 source text is fine), however you can convert AsciiDoc3 text files to
 formatted text using the AsciiDoc3 <<X43,a2x3>> toolchain wrapper
 utility.
@@ -521,9 +521,9 @@ stylesheet and to optionally include additional JavaScript code.
   `--theme` option, the `--theme` option can also be used to manage
   theme <<X101,plugins>>.
 - AsciiDoc3 ships with two themes: 'flask' and 'volnitsky'.
-- The `<theme>.css` file replaces the default `asciidoc.css` CSS file.
+- The `<theme>.css` file replaces the default `asciidoc3.css` CSS file.
 - The `<theme>.js` file is included in addition to the default
-  `asciidoc.js` JavaScript file.
+  `asciidoc3.js` JavaScript file.
 - If the <<X66,data-uri>> attribute is defined then icons are loaded
   from the theme `icons` sub-directory if it exists (i.e.  the
   'iconsdir' attribute is set to theme `icons` sub-directory path).
@@ -686,7 +686,7 @@ You can override or set header parameters by passing 'revnumber',
 'firstname' and 'lastname' attributes using the asciidoc3 `-a`
 (`--attribute`) command-line option. For example:
 
-  $ asciidoc -a revdate=2004/07/27 article.txt
+  $ asciidoc3 -a revdate=2004/07/27 article.txt
 
 Attribute entries can also be added to the header for substitution in
 the header template with <<X18,Attribute Entry>> elements.
@@ -728,7 +728,7 @@ DocBook::
   Valid 'articleinfo' or 'bookinfo' child elements.  DocBook defines
   numerous elements for document meta-data, for example: copyrights,
   document history and authorship information.  See the DocBook
-  `./doc/article-docinfo.xml` example that comes with the AsciiDoc
+  `./doc/article-docinfo.xml` example that comes with the AsciiDoc3
   distribution.  The rendering of meta-data elements (or not) is
   DocBook processor dependent.
 
@@ -744,7 +744,7 @@ Sections
 In addition to the document title (level 0), AsciiDoc3 supports four
 section levels: 1 (top) to 4 (bottom).  Section levels are delimited
 by section <<X17,titles>>.  Sections are translated using
-configuration file <<X93,section markup templates>>. AsciiDoc
+configuration file <<X93,section markup templates>>. AsciiDoc3
 generates the following <<X60,intrinsic attributes>> specifically for
 use in section markup templates:
 
@@ -837,7 +837,7 @@ AsciiDoc3 has a mechanism for mapping predefined section titles
 auto-magically to specific markup templates. For example a title
 'Appendix A: Code Reference' will automatically use the 'appendix'
 <<X93,section markup template>>. The mappings from title to template
-name are specified in `[specialsections]` sections in the Asciidoc
+name are specified in `[specialsections]` sections in the Asciidoc3
 language configuration files (`lang-*.conf`).  Section entries are
 formatted like:
 
@@ -1055,7 +1055,7 @@ NOTE: Color and text decorator attributes are rendered for XHTML and
 HTML 5 outputs using CSS stylesheets.  The mechanism to implement
 color and text decorator attributes is provided for DocBook toolchains
 via the DocBook 'phrase' element 'role' attribute, but the actual
-rendering is toolchain specific and is not part of the AsciiDoc
+rendering is toolchain specific and is not part of the AsciiDoc3
 distribution.
 
 [[X52]]
@@ -1143,7 +1143,7 @@ for example `--attribute tabsize=4`
 
 Replacements
 ~~~~~~~~~~~~
-The following replacements are defined in the default AsciiDoc
+The following replacements are defined in the default AsciiDoc3
 configuration:
 
   (C) copyright, (TM) trademark, (R) registered trademark,
@@ -1156,7 +1156,7 @@ Which are rendered as:
 -- em dash, ... ellipsis, -> right arrow, <- left arrow, => right
 double arrow, <= left double arrow.
 
-You can also include arbitrary entity references in the AsciiDoc
+You can also include arbitrary entity references in the AsciiDoc3
 source. Examples:
 
   &#x278a; &#182;
@@ -1531,7 +1531,7 @@ in configuration file `[blockdef-*]` sections.
 Predefined Delimited Blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 AsciiDoc3 ships with a number of predefined DelimitedBlocks (see the
-`asciidoc.conf` configuration file in the asciidoc3 program
+`asciidoc3.conf` configuration file in the asciidoc3 program
 directory):
 
 Predefined delimited block underlines:
@@ -2466,7 +2466,7 @@ macros).  Here are some examples:
 
   http://www.docbook.org/[DocBook.org]
   include::chapt1.txt[tabsize=2]
-  mailto:srackham@gmail.com[]
+  mailto:berthold.gehrke@gmail.com[]
 
 .Macro behavior
 - `<name>` is the macro name. It can only contain letters, digits or
@@ -2740,7 +2740,7 @@ can use the 'data-uri' attribute with the 'xhtml11' and 'html5'
 backends to produce single-file XHTML documents with embedded images
 and CSS, for example:
 
-  $ asciidoc -a data-uri mydocument.txt
+  $ asciidoc3 -a data-uri mydocument.txt
 
 [NOTE]
 ======
@@ -2881,7 +2881,7 @@ the Python expression inside the square brackets is true. Example:
 - If an attribute reference is undefined then the expression is
   considered false.
 
-Take a look at the `*.conf` configuration files in the AsciiDoc
+Take a look at the `*.conf` configuration files in the AsciiDoc3
 distribution for examples of conditional inclusion macro usage.
 
 Executable system macros
@@ -3348,7 +3348,7 @@ width attribute. It's a bit more complicated with DocBook, see the
 
 filter::
 The 'filter' attribute defines an external shell command that is
-invoked for each cell. The built-in 'asciidoc' table style is
+invoked for each cell. The built-in 'asciidoc3' table style is
 implemented using a filter.
 
 [[X89]]
@@ -3462,7 +3462,7 @@ header::
 Apply the same style as the table header. Normally used to create a
 vertical header in the first column.
 
-asciidoc::
+asciidoc3::
 With this style table cells can contain any of the AsciiDoc3 elements
 that are allowed inside document sections. This style runs asciidoc3
 as a filter to process cell contents. See also <<X83,Docbook table
@@ -3539,7 +3539,7 @@ Nested tables
 ~~~~~~~~~~~~~
 An alternative 'psv' separator character '!' can be used (instead of
 '|') in nested tables. This allows a single level of table nesting.
-Columns containing nested tables must use the 'asciidoc' style. An
+Columns containing nested tables must use the 'asciidoc3' style. An
 example can be found in `./examples/website/newtables.txt`.
 
 [[X83]]
@@ -3573,7 +3573,7 @@ NOTE: In theory you can nest DocBook 4 tables one level using the
   is a kludge on the part of AsciiDoc3 as there is no easy way to set
   the font style in DocBook.
 
-- Cell alignments are ignored for 'verse', 'literal' or 'asciidoc'
+- Cell alignments are ignored for 'verse', 'literal' or 'asciidoc3'
   table styles.
 
 
@@ -3588,25 +3588,25 @@ can write AsciiDoc3 files that will generate HTML and PDF man pages
 plus the native manpage roff format.  The easiest way to generate roff
 manpages from AsciiDoc3 source is to use the a2x3 command. The
 following example generates a roff formatted manpage file called
-`asciidoc.1` (a2x3 uses asciidoc3 to convert `asciidoc.1.txt` to
+`asciidoc3.1` (a2x3 uses asciidoc3 to convert `asciidoc3.1.txt` to
 DocBook which it then converts to roff using DocBook XSL Stylesheets):
 
-  a2x3 --doctype manpage --format manpage asciidoc.1.txt
+  a2x3 --doctype manpage --format manpage asciidoc3.1.txt
 
 .Viewing and printing manpage files
 **********************************************************************
 Use the `man(1)` command to view the manpage file:
 
-  $ man -l asciidoc.1
+  $ man -l asciidoc3.1
 
 To print a high quality man page to a postscript printer:
 
-  $ man -l -Tps asciidoc.1 | lpr
+  $ man -l -Tps asciidoc3.1 | lpr
 
 You could also create a PDF version of the man page by converting
 PostScript to PDF using `ps2pdf(1)`:
 
-  $ man -l -Tps asciidoc.1 | ps2pdf - asciidoc.1.pdf
+  $ man -l -Tps asciidoc3.1 | ps2pdf - asciidoc3.1.pdf
 
 The `ps2pdf(1)` command is included in the Ghostscript distribution.
 **********************************************************************
@@ -3619,7 +3619,7 @@ Document Header
 ~~~~~~~~~~~~~~~
 A manpage document Header is mandatory. The title line contains the
 man page name followed immediately by the manual section number in
-brackets, for example 'ASCIIDOC(1)'. The title name should not contain
+brackets, for example 'ASCIIDOC3(1)'. The title name should not contain
 white space and the manual section number is a single digit optionally
 followed by a single character.
 
@@ -3642,12 +3642,12 @@ refmiscinfo attributes
 In addition to the automatically created man page <<X60,intrinsic
 attributes>> you can assign DocBook
 http://www.docbook.org/tdg5/en/html/refmiscinfo.html[refmiscinfo]
-element 'source', 'version' and 'manual' values using AsciiDoc
+element 'source', 'version' and 'manual' values using AsciiDoc3
 `{mansource}`, `{manversion}` and `{manmanual}` attributes
 respectively. This example is from the AsciiDoc3 header of a man page
 source file:
 
-  :man source:   AsciiDoc
+  :man source:   AsciiDoc3
   :man version:  {revnumber}
   :man manual:   AsciiDoc3 Manual
 
@@ -3853,7 +3853,7 @@ newline::
         `\r\n` (carriage return, line feed). Should not be quoted or
         contain explicit spaces (use `\x20` instead). For example:
 
-        $ asciidoc -a 'newline=\n' -b docbook mydoc.txt
+        $ asciidoc3 -a 'newline=\n' -b docbook mydoc.txt
 
 outfilesuffix::
         The default extension for the output file, for example
@@ -3948,7 +3948,7 @@ Quoting is used primarily for text formatting.  The `[quotes]` section
 defines AsciiDoc3 quoting characters and their corresponding backend
 markup tags.  Each section entry value is the name of a of a `[tags]`
 section entry. The entry name is the character (or characters) that
-quote the text.  The following examples are taken from AsciiDoc
+quote the text.  The following examples are taken from AsciiDoc3
 configuration files:
 
   [quotes]
@@ -3964,7 +3964,7 @@ separating them with a | character, for example:
 
 Omitting the tag will disable quoting, for example, if you don't want
 superscripts or subscripts put the following in a custom configuration
-file or edit the global `asciidoc.conf` configuration file:
+file or edit the global `asciidoc3.conf` configuration file:
 
   [quotes]
   ^=
@@ -4088,22 +4088,22 @@ Configuration file names, precedence and locations
 Configuration files have a `.conf` file name extension; they are
 loaded from the following locations:
 
-1. The directory containing the asciidoc executable.
-2. If there is no `asciidoc.conf` file in the directory containing the
-   asciidoc executable then load from the global configuration
-   directory (normally `/etc/asciidoc` or `/usr/local/etc/asciidoc`)
+1. The directory containing the asciidoc3 executable.
+2. If there is no `asciidoc3.conf` file in the directory containing the
+   asciidoc3 executable then load from the global configuration
+   directory (normally `/etc/asciidoc3` or `/usr/local/etc/asciidoc3`)
    i.e. the global configuration files directory is skipped if
    AsciiDoc3 configuration files are installed in the same directory as
-   the asciidoc executable. This allows both a system wide copy and
+   the asciidoc3 executable. This allows both a system wide copy and
    multiple local copies of AsciiDoc3 to coexist on the same host PC.
-3. The user's `$HOME/.asciidoc` directory (if it exists).
+3. The user's `$HOME/.asciidoc3` directory (if it exists).
 4. The directory containing the AsciiDoc3 source file.
 5. Explicit configuration files specified using:
    - The `conf-files` attribute (one or more file names separated by a
      `|` character). These files are loaded in the order they are
      specified and prior to files specified using the `--conf-file`
      command-line option.
-   - The asciidoc3 `--conf-file`) command-line option.  The
+   - The asciidoc3 `--conf-file` command-line option.  The
      `--conf-file` option can be specified multiple times, in which
      case configuration files will be processed in the same order they
      appear on the command-line.
@@ -4117,15 +4117,15 @@ Configuration files from the above locations are loaded in the
 following order:
 
 - The `[attributes]` section only from:
-  * `asciidoc.conf` in location 3
+  * `asciidoc3.conf` in location 3
   * Files from location 5.
 +
 This first pass makes locally set attributes available in the global
-`asciidoc.conf` file.
+`asciidoc3.conf` file.
 
-- `asciidoc.conf` from locations 1, 2, 3.
+- `asciidoc3.conf` from locations 1, 2, 3.
 - 'attributes', 'titles' and 'specialcharacters' sections from the
-  `asciidoc.conf` in location 4.
+  `asciidoc3.conf` in location 4.
 - The document header is parsed at this point and we can assume the
   'backend' and 'doctype' have now been defined.
 - Backend plugin `<backend>.conf` and `<backend>-<doctype>.conf` files
@@ -4134,7 +4134,7 @@ This first pass makes locally set attributes available in the global
   `<backend>-<doctype>.conf` backend configuration files.
 - Filter conf files from locations 7.
 - `lang-<lang>.conf` from locations 1, 2, 3.
-- `asciidoc.conf` from location 4.
+- `asciidoc3.conf` from location 4.
 - `<backend>.conf` and `<backend>-<doctype>.conf` from location 4.
 - Filter conf files from location 4.
 - `<docfile>.conf` and `<docfile>-<backend>.conf` from location 4.
@@ -4254,10 +4254,10 @@ Here are some more attribute entry examples:
 ---------------------------------------------------------------------
 AsciiDoc3 User Manual
 ====================
-:author:    Stuart Rackham
-:email:     srackham@gmail.com
-:revdate:   April 23, 2004
-:revnumber: 5.1.1
+:author:    Berthold Gehrke
+:email:     berthold.gehrke@gmail.com
+:revdate:   April 17, 2018
+:revnumber: 1.2.3
 ---------------------------------------------------------------------
 
 Which creates these attributes:
@@ -4270,8 +4270,8 @@ The previous example is equivalent to this <<X95,document header>>:
 ---------------------------------------------------------------------
 AsciiDoc3 User Manual
 ====================
-Stuart Rackham <srackham@gmail.com>
-5.1.1, April 23, 2004
+Berthold Gehrke <berthold.gehrke@gmail.com>
+1.2.3, April 17, 2018
 ---------------------------------------------------------------------
 
 Setting configuration entries
@@ -4316,8 +4316,8 @@ compounded by redundancy if the same name is used repeatedly.
 Attribute entries can be used to make your documents easier to read
 and write, here are some examples:
 
-  :1:         http://freshmeat.net/projects/asciidoc/
-  :homepage:  http://asciidoc.org[AsciiDoc3 home page]
+  :1:         http://freshmeat.net/projects/asciidoc3/
+  :homepage:  http://asciidoc3.org[AsciiDoc3 home page]
   :new:       image:./images/smallnew.png[]
   :footnote1: footnote:[A meaningless latin term]
 
@@ -4615,11 +4615,11 @@ configuration files; the execution context.  Here's the list of
 predefined intrinsic attributes:
 
   {amp}                 ampersand (&) character entity
-  {asciidoc-args}       used to pass inherited arguments to asciidoc filters
-  {asciidoc-confdir}    the asciidoc3 global configuration directory
-  {asciidoc-dir}        the asciidoc3 application directory
-  {asciidoc-file}       the full path name of the asciidoc3 script
-  {asciidoc-version}    the version of asciidoc3
+  {asciidoc3-args}      used to pass inherited arguments to asciidoc3 filters
+  {asciidoc3-confdir}   the asciidoc3 global configuration directory
+  {asciidoc3-dir}       the asciidoc3 application directory
+  {asciidoc3-file}      the full path name of the asciidoc3 script
+  {asciidoc3-version}   the version of asciidoc3
   {author}              author's full name
   {authored}            empty string '' if {author} or {email} defined,
   {authorinitials}      author initials (from document header)
@@ -4681,7 +4681,7 @@ predefined intrinsic attributes:
   {title}               section title (in titled elements)
   {two-colons}          two colon characters
   {two-semicolons}      two semicolon characters
-  {user-dir}            the ~/.asciidoc directory (if it exists)
+  {user-dir}            the ~/.asciidoc3 directory (if it exists)
   {verbose}             defined as '' if --verbose command option specified
   {wj}                  word-joiner
   {zwsp}                zero-width space character entity
@@ -4864,7 +4864,7 @@ Paragraphs
 ~~~~~~~~~~
 Paragraph translation is controlled by `[paradef-*]` configuration
 file section entries. Users can define new types of paragraphs and
-modify the behavior of existing types by editing AsciiDoc
+modify the behavior of existing types by editing AsciiDoc3
 configuration files.
 
 Here is the shipped Default paragraph definition:
@@ -4960,7 +4960,7 @@ tags::
   The `<name>` of the `[listtags-<name>]` configuration file section
   containing list markup tag definitions.  The tag entries ('list',
   'entry', 'label', 'term', 'text') map the AsciiDoc3 list structure to
-  backend markup; see the 'listtags' sections in the AsciiDoc
+  backend markup; see the 'listtags' sections in the AsciiDoc3
   distributed backend `.conf` configuration files for examples.
 
 Tables
@@ -5015,7 +5015,7 @@ pageunits::
 [[X59]]
 Filters
 -------
-AsciiDoc3 filters allow external commands to process AsciiDoc
+AsciiDoc3 filters allow external commands to process AsciiDoc3
 'Paragraphs', 'DelimitedBlocks' and 'Table' content. Filters are
 primarily an extension mechanism for generating specialized outputs.
 Filters are implemented using external commands which are specified in
@@ -5041,9 +5041,9 @@ Filter Search Paths
 If the filter command does not specify a directory path then
 asciidoc3 recursively searches for the executable filter command:
 
-- First it looks in the user's `$HOME/.asciidoc/filters` directory.
-- Next the global filters directory (usually `/etc/asciidoc/filters`
-  or `/usr/local/etc/asciidoc`) directory is searched.
+- First it looks in the user's `$HOME/.asciidoc3/filters` directory.
+- Next the global filters directory (usually `/etc/asciidoc3/filters`
+  or `/usr/local/etc/asciidoc3`) directory is searched.
 - Then it looks in the asciidoc3 `./filters` directory.
 - Finally it relies on the executing shell to search the environment
   search path (`$PATH`).
@@ -5114,17 +5114,17 @@ AsciiDoc3 output documents.
 
 |graphviz
 |Gouichi Iisaka has written a http://www.graphviz.org/[Graphviz]
-filter for AsciiDoc.  Graphviz generates diagrams from a textual
+filter for AsciiDoc(3).  Graphviz generates diagrams from a textual
 specification. Gouichi Iisaka's Graphviz filter is included in the
 AsciiDoc3 distribution. Here are some
-{website}asciidoc-graphviz-sample.html[AsciiDoc3 Graphviz examples].
+{website}asciidoc3-graphviz-sample.html[AsciiDoc3 Graphviz examples].
 
 |====================================================================
 
 [[X58]]
 Filter plugins
 ~~~~~~~~~~~~~~
-Filter <<X101,plugins>> are a mechanism for distributing AsciiDoc
+Filter <<X101,plugins>> are a mechanism for distributing AsciiDoc3
 filters.  A filter plugin is a Zip file containing the files that
 constitute a filter.  The asciidoc3 `--filter` option is used to
 load and manage filer <<X101,plugins>>.
@@ -5132,7 +5132,7 @@ load and manage filer <<X101,plugins>>.
 - Filter plugins <<X27,take precedence>> over built-in filters with
   the same name.
 - By default filter plugins are installed in
-  `$HOME/.asciidoc/filters/<filter>` where `<filter>` is the filter
+  `$HOME/.asciidoc3/filters/<filter>` where `<filter>` is the filter
   name.
 
 
@@ -5141,7 +5141,7 @@ Plugins
 -------
 The AsciiDoc3 plugin architecture is an extension mechanism that allows
 additional <<X100,backends>>, <<X58,filters>> and <<X99,themes>> to be
-added to AsciiDoc.
+added to AsciiDoc3.
 
 - A plugin is a Zip file containing an AsciiDoc3 backend, filter or
   theme (configuration files, stylesheets, scripts, images).
@@ -5155,8 +5155,7 @@ added to AsciiDoc.
   theme name.
 
 Plugin commands and conventions are documented in the asciidoc3 man
-page.  You can find lists of plugins on the
-{website}plugins.html[AsciiDoc3 website].
+page. You can find lists of plugins at asciidoc3.org.
 
 
 [[X36]]
@@ -5165,16 +5164,16 @@ Help Commands
 The asciidoc3 command has a `--help` option which prints help topics
 to stdout. The default topic summarizes asciidoc3 usage:
 
-  $ asciidoc --help
+  $ asciidoc3 --help
 
 To print a help topic specify the topic name as a command argument.
 Help topic names can be shortened so long as they are not ambiguous.
 Examples:
 
-  $ asciidoc --help manpage
-  $ asciidoc -h m              # Short version of previous example.
-  $ asciidoc --help syntax
-  $ asciidoc -h s              # Short version of previous example.
+  $ asciidoc3 --help manpage
+  $ asciidoc3 -h m              # Short version of previous example.
+  $ asciidoc3 --help syntax
+  $ asciidoc3 -h s              # Short version of previous example.
 
 Customizing Help
 ~~~~~~~~~~~~~~~~
@@ -5211,6 +5210,8 @@ follow.
 [[X20]]
 Vim Commands for Formatting AsciiDoc
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(Not sure, if this works for AsciiDoc3 - but probably it does...)
+
 Text Wrap Paragraphs
 ^^^^^^^^^^^^^^^^^^^^
 Use the vim `:gq` command to reformat paragraphs. Setting the
@@ -5340,7 +5341,7 @@ Special characters in attribute values::
     on the substitution context, need to escape the special characters
     yourself. For example:
 
-    $ asciidoc -a 'orgname=Bill &amp; Ben Inc.' mydoc.txt
+    $ asciidoc3 -a 'orgname=Bill &amp; Ben Inc.' mydoc.txt
 
 Attribute lists::
     If any named attribute entries are present then all string
@@ -5425,12 +5426,12 @@ Use the `-s` (`--no-header-footer`) command-line option to suppress
 header and footer output, this is useful if the processed output is to
 be included in another file. For example:
 
-  $ asciidoc -sb docbook section1.txt
+  $ asciidoc3 -sb docbook section1.txt
 
 asciidoc3 can be used as a filter, so you can pipe chunks of text
 through it. For example:
 
-  $ echo 'Hello *World!*' | asciidoc -s -
+  $ echo 'Hello *World!*' | asciidoc3 -s -
   <div class="paragraph"><p>Hello <strong>World!</strong></p></div>
 
 Badges in HTML page footers
@@ -5450,7 +5451,7 @@ liking you can:
 2. Use Dave Raggett's http://tidy.sourceforge.net/[HTML Tidy] program
    to tidy asciidoc3 output. Example:
 
-   $ asciidoc -b docbook -o - mydoc.txt | tidy -indent -xml >mydoc.xml
+   $ asciidoc3 -b docbook -o - mydoc.txt | tidy -indent -xml >mydoc.xml
 
 3. Use the `xmllint(1)` format option. Example:
 
@@ -5473,7 +5474,7 @@ scripts.  The following AsciiDoc3 command creates a single file
 containing <<X66,embedded images>>, CSS stylesheets, and JavaScript
 (for table of contents and footnotes):
 
-  $ asciidoc -a data-uri -a icons -a toc -a max-width=55em article.txt
+  $ asciidoc3 -a data-uri -a icons -a toc -a max-width=55em article.txt
 
 You can view the HTML file here: {website}article-standalone.html[]
 
@@ -5486,17 +5487,17 @@ creator's you won't get the same output.
 The solution is to create a single backend specific configuration file
 using the asciidoc3 `-c` (`--dump-conf`) command-line option. You
 then ship this file along with the AsciiDoc3 source document plus the
-`asciidoc.py` script. The only end user requirement is that they have
+`asciidoc3.py` script. The only end user requirement is that they have
 Python installed (and that they consider you a trusted source). This
 example creates a composite HTML configuration file for `mydoc.txt`:
 
-  $ asciidoc -cb xhtml11 mydoc.txt > mydoc-xhtml11.conf
+  $ asciidoc3 -cb xhtml11 mydoc.txt > mydoc-xhtml11.conf
 
-Ship `mydoc.txt`, `mydoc-html.conf`, and `asciidoc.py`. With
+Ship `mydoc.txt`, `mydoc-html.conf`, and `asciidoc3.py`. With
 these three files (and a Python interpreter) the recipient can
 regenerate the HMTL output:
 
-  $ ./asciidoc.py -eb xhtml11 mydoc.txt
+  $ ./asciidoc3.py -eb xhtml11 mydoc.txt
 
 The `-e` (`--no-conf`) option excludes the use of implicit
 configuration files, ensuring that only entries from the
@@ -5594,7 +5595,7 @@ Version 7 to version 8
   icon and CSS files must be specified explicitly with the `--icons`
   and `--copy` options.
 
-The rationale for the changes can be found in the AsciiDoc
+The rationale for the changes can be found in the AsciiDoc3
 `CHANGELOG`.
 
 NOTE: If you want to disable unconstrained quotes, the new alternative
@@ -5634,7 +5635,7 @@ asciidoc3 `--safe` command-line option.
 
 [WARNING]
 =====================================================================
-The safe mode is not designed to protect against unsafe AsciiDoc
+The safe mode is not designed to protect against unsafe AsciiDoc3
 configuration files. Be especially careful when:
 
 1. Implementing filters.
@@ -5653,7 +5654,7 @@ you need to be aware of:
   then you should set the AsciiDoc3 `lang` attribute to the appropriate
   language (it defaults to `en` (English)). This will ensure things
   like table of contents, figure and table captions and admonition
-  captions are output in the specified language.  For example:
+  captions are output in the specified language. For example:
 
   $ a2x3 -a lang=es doc/article.txt
 
@@ -5661,7 +5662,7 @@ you need to be aware of:
   need to set the various `*_caption` attributes to match your target
   language (see the list of captions and titles in the `[attributes]`
   section of the distribution `lang-*.conf` files). The easiest way is
-  to create a language `.conf` file (see the AsciiDoc's `lang-en.conf`
+  to create a language `.conf` file (see the AsciiDoc3's `lang-en.conf`
   file).
 +
 NOTE: You still use the 'NOTE', 'CAUTION', 'TIP', 'WARNING',
@@ -5673,11 +5674,37 @@ the HTML output file.
   matches the current AsciiDoc3 `lang` attribute. See also
   <<X27,Configuration File Names and Locations>>.
 
+- If you miss the file for your favorite language, search the web for
+  something like 'lang conf asciidoc <your two letter-lang-code like
+  en or fr here>'. Chances are that anybody else has already had the
+  same question and provides a conf-file. Or you write it by yourself
+  (and please, send it to asciidoc3.org)!
+
 
 [appendix]
 Vim Syntax Highlighter
 ----------------------
-/../
+Syntax highlighting is incredibly useful, in addition to making
+reading AsciiDoc3 documents much easier syntax highlighting also helps
+you catch AsciiDoc3 syntax errors as you write your documents.
+
+The AsciiDoc3 distribution directory contains a Vim syntax highlighter
+for AsciiDoc3 (`./vim/syntax/asciidoc.vim`).
+
+Install the highlighter by copying `asciidoc3.vim` to your
+`$HOME/.vim/syntax` directory (create it if it doesn't already exist).
+
+To enable syntax highlighing:
+
+- Put a Vim 'autocmd' in your Vim configuration file (see the
+  <<X61,example vimrc file>>).
+- or execute the Vim command `:set syntax=asciidoc3`.
+- or add the following line to the end of you AsciiDoc3 source files:
+
+  // vim: set syntax=asciidoc3:
+
+The highlighter is (almost) the same as in AsciiDoc v2 - but should 
+work though. Thanks al lot for all contributors!
 
 
 [[X74]]
@@ -5692,7 +5719,7 @@ Here is the list of predefined <<X75,attribute list options>>:
 |Option|Backends|AsciiDoc3 Elements|Description
 
 |autowidth |xhtml11, html5, html4 |table|
-The column widths are determined by the browser, not the AsciiDoc
+The column widths are determined by the browser, not the AsciiDoc3
 'cols' attribute. If there is no 'width' attribute the table width is
 also left up to the browser.
 
@@ -5799,15 +5826,15 @@ Command-line examples:
 
 . Trace the entire document.
 
-  $ asciidoc -a trace mydoc.txt
+  $ asciidoc3 -a trace mydoc.txt
 
 . Trace messages whose names start with `quotes` or `macros`:
 
-  $ asciidoc -a 'trace=quotes|macros'  mydoc.txt
+  $ asciidoc3 -a 'trace=quotes|macros'  mydoc.txt
 
 . Print the first line of each trace message:
 
-  $ asciidoc -a trace mydoc.txt 2>&1 | grep ^TRACE:
+  $ asciidoc3 -a trace mydoc.txt 2>&1 | grep ^TRACE:
 
 Attribute Entry examples:
 
@@ -5854,9 +5881,9 @@ Eric Meyer].
 
 
 |disable-javascript |xhtml11, html5 |
-If the `disable-javascript` attribute is defined the `asciidoc.js`
+If the `disable-javascript` attribute is defined the `asciidoc3.js`
 JavaScript is not embedded or linked to the output document.  By
-default AsciiDoc3 automatically embeds or links the `asciidoc.js`
+default AsciiDoc3 automatically embeds or links the `asciidoc3.js`
 JavaScript to the output document. The script dynamically generates
 <<X91,table of contents>> and <<X92,footnotes>>.
 
@@ -5868,19 +5895,19 @@ docinfo:: Include `<filename>-docinfo.<ext>`
 docinfo1:: Include `docinfo.<ext>`
 docinfo2:: Include `docinfo.<ext>` and `<filename>-docinfo.<ext>`
 
-Where `<filename>` is the file name (sans extension) of the AsciiDoc
+Where `<filename>` is the file name (sans extension) of the AsciiDoc3
 input file and `<ext>` is `.html` for HTML outputs or `.xml` for
 DocBook outputs. If the input file is the standard input then the
 output file name is used. The following example will include the
 `mydoc-docinfo.xml` docinfo file in the DocBook `mydoc.xml` output
 file:
 
-  $ asciidoc -a docinfo -b docbook mydoc.txt
+  $ asciidoc3 -a docinfo -b docbook mydoc.txt
 
 This next example will include `docinfo.html` and `mydoc-docinfo.html`
 docinfo files in the HTML output file:
 
-  $ asciidoc -a docinfo2 -b html4 mydoc.txt
+  $ asciidoc3 -a docinfo2 -b html4 mydoc.txt
 
 
 |[[X54]]encoding |html4, html5, xhtml11, docbook |
@@ -5980,7 +6007,7 @@ header or from the command-line with an `--attribute toc!` option.
 - The following example generates a numbered table of contents using a
   JavaScript embedded in the `mydoc.html` output document:
 
-  $ asciidoc -a toc -a numbered mydoc.txt
+  $ asciidoc3 -a toc -a numbered mydoc.txt
 
 |toc2 |html5, xhtml11 |
 Adds a scrollable table of contents in the left hand margin of an
@@ -6006,7 +6033,7 @@ Sets the number of title levels (1..4) reported in the table of
 contents (see the 'toc' attribute above). Defaults to 2 and must be
 used with the 'toc' attribute. Example usage:
 
-  $ asciidoc -a toc -a toclevels=3 doc/asciidoc.txt
+  $ asciidoc3 -a toc -a toclevels=3 doc/asciidoc3.txt
 
 |====================================================================
 
@@ -6014,13 +6041,13 @@ used with the 'toc' attribute. Example usage:
 [appendix]
 License
 -------
-(AsciiDoc3 Copyright (C) 2002-2011 Stuart Rackham; using Python2.x)
+(AsciiDoc Copyright (C) 2002-2011 Stuart Rackham; using Python2.x)
 
 AsciiDoc3 Text based document generation using Python 3.x. +
 Copyright (C) 2018 by Berthold Gehrke <berthold.gehrke@gmail.com>
 
 This program is free software: you can redistribute it and/or modify +
-it under the terms of the GNU Affero General Public License as +
+it under the terms of the GNU General Public License as +
 published by the Free Software Foundation, either version 3 of the +
 License, or (at your option) any later version. +
 
@@ -6029,5 +6056,5 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of +
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the +
 GNU Affero General Public License for more details.
 
-You should have received a copy of the GNU Affero General Public License +
+You should have received a copy of the GNU General Public License +
 along with this program. If not, see https://www.gnu.org/licenses/.
