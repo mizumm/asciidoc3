@@ -185,7 +185,7 @@ class AsciiDoc3API(object):
                 if float(sys.version[:3]) < float('3.4'):
                     imp.load_source('asciidoc3', self.cmd)
                 else:
-                    importlib.import_module('asciidoc3')
+                    import asciidoc3
                 self.asciidoc3 = asciidoc3
             except ImportError:
                 raise AsciiDoc3Error('failed to import ' + self.cmd)
