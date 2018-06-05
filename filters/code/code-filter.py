@@ -52,7 +52,7 @@ COPYING
     granted under the terms of the Affero GNU General Public License v3.
 '''
 
-import os, sys, re, string
+import os, sys, regex as re, string
 
 VERSION = '3.0.1'
 

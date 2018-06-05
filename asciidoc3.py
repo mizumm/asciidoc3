@@ -20,7 +20,7 @@ from io import StringIO as io_StringIO
 from itertools import repeat as itertools_repeat
 from locale import getdefaultlocale
 import os
-import re
+import regex as re
 import shutil
 import subprocess
 import sys

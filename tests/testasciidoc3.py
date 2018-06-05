@@ -13,7 +13,7 @@ import difflib
 import getopt
 import io
 import os
-import re
+import regex as re
 import sys
 
 import asciidoc3api

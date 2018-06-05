@@ -13,7 +13,7 @@ import fnmatch
 import html.parser
 import mimetypes
 import os
-import re
+import regex as re
 import shutil
 import subprocess
 import sys

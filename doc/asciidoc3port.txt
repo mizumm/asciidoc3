@@ -244,7 +244,7 @@ Let's do it: add the above snippet manually to asciidoc2.py ...
 
 -------
 [...]
-import sys, os, re, time, traceback, tempfile, subprocess, codecs, locale, unicodedata, copy    ##_nr_: 9 _
+import sys, os, regex as re, time, traceback, tempfile, subprocess, codecs, locale, unicodedata, copy    ##_nr_: 9 _
 if not sys.argv[1:]:
     sys.argv += ["-o", "~/ad3/outputfiles/helloworld.html", "~/ad3/inputfiles/helloworld.txt"] 
                                                                                                 ##_nr_: 10 _
@@ -467,7 +467,7 @@ The first step is to add line numbers to asciidoc2.py - that is done already. Th
     (c) 2017, GPLv3
     """   
 
-import re
+import regex as re
 from os.path import expanduser 
 
 homedir = expanduser('~')
@@ -484,7 +484,7 @@ ad2new, counter = re.subn(r'import sys, os, re.*?##_nr_: 10 _', \
 import copy
 import locale
 import os
-import re
+import regex as re
 import subprocess
 import sys
 import tempfile
@@ -3777,9 +3777,9 @@ What's this - we have to take a look on the source code. There we see some items
          vs.
 #!/usr/bin/env python3
 
-import os, sys, re, string
+import os, sys, regex as re, string
          vs. 
-import os, sys, re
+import os, sys, regex as re
 
 line = string.rstrip(line)
 line = string.expandtabs(line, tabsize)
@@ -4641,7 +4641,7 @@ class Section:                                                                  
 To prove this, I use a little test-program that contains the critical lines of "asciidoc3.py" 
 
 --------------------
-import re
+import regex as re
 from unicodedata import normalize
 
 def gen_id(title):
@@ -4989,7 +4989,7 @@ So I load imp/importlib depending on Python's version:
 
 --------------
 [...]
-import sys, os, re
+import sys, os, regex as re
 if float('3.0') <= float(sys.version[:3]) < float('3.4'):
     import imp
 elif float('3.4') <= float(sys.version[:3]):
